@@ -93,7 +93,7 @@ const App = () => {
   const handleChange = (e, callback) => {
     let value = e.target.value;
 
-    if (value.length > 1 && value[0] == '0') {
+    if (value.length > 1 && value[0] === '0') {
       callback(value.slice(1));
       return;
     }
