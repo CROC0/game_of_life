@@ -22,8 +22,8 @@ const speeds = {
 };
 
 const boxSizes = {
-  small: 10,
-  large: 15,
+  small: 0.8,
+  large: 1.15,
 };
 
 const App = () => {
@@ -71,22 +71,20 @@ const App = () => {
   }, [numCols, numRows]);
 
   function generateEmptyGrid() {
-    setLoading(true);
     const rows = [];
     for (let i = 0; i < numRows; i++) {
       rows.push(Array.from(Array(numCols), () => 0));
     }
-    setLoading(false);
+
     return rows;
   }
 
   const generateRandomGrid = () => {
-    setLoading(true);
     const rows = [];
     for (let i = 0; i < numRows; i++) {
       rows.push(Array.from(Array(numCols), () => (Math.random() > random ? 1 : 0)));
     }
-    setLoading(false);
+
     return rows;
   };
 
@@ -228,9 +226,10 @@ const App = () => {
         </Grid.Column>
         <Grid.Column width={13}>
           <div
+            className='grid-body'
             style={{
               display: 'grid',
-              gridTemplateColumns: `repeat(${gridWidth}, ${boxSize}px)`,
+              gridTemplateColumns: `repeat(${gridWidth}, ${boxSize}rem)`,
             }}>
             {grid.map((row, i) =>
               row.map((col, k) => (
@@ -243,8 +242,8 @@ const App = () => {
                   }}
                   key={`${i}-${k}`}
                   style={{
-                    height: boxSize,
-                    width: boxSize,
+                    height: `${boxSize}rem`,
+                    width: `${boxSize}rem`,
                     border: '1px solid black',
                     backgroundColor: grid[i][k] ? 'pink' : null,
                   }}></div>

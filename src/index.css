@@ -8,3 +8,9 @@
   top: 20px;
   left: 20px;
 }
+
+@media only screen and (max-width: 1000px) {
+  html {
+    font-size: 62.5%;
+  }
+}
